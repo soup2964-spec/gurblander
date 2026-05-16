@@ -1,29 +1,63 @@
 # Audio Wash
 
-Small utility to normalize MP4 files with FFmpeg: strips the audio track, drops container metadata mappings, mirrors the picture, and applies a subtle center zoom/crop so pixels are resampled differently from the originals. Video-only files are written next door under `clean/`.
+Small utility to normalize MP4 files with FFmpeg: strips the audio track, drops container metadata mappings, mirrors the picture, and applies a subtle center zoom/crop so pixels are resampled differently from the originals. Video-only files are written under `clean/`.
 
 ## Requirements
 
 - Python 3.10+
 - [FFmpeg](https://ffmpeg.org/) on your `PATH`, built with libx264 (typical builds include it)
 
-No extra Python packages are required.
+For the web dashboard, install:
 
-## Layout
+```bash
+pip install -r requirements.txt
+```
 
-Put source files here:
+## Quick Start (Dashboard)
+
+Run a local dev server with upload + download UI:
+
+```bash
+python app.py
+```
+
+Open:
+
+`http://127.0.0.1:5000`
+
+Flow:
+
+1. Upload one `.mp4`
+2. Server saves it to `raw/`
+3. FFmpeg processes it
+4. Download from the cleaned files list (`*_cleaned.mp4`)
+
+## CLI Layout
+
+Source MP4 files (same folder depth as examples — **non-recursive**):
 
 ```
 raw/*.mp4
+cursor-uploads/*.mp4   ← Cursor / workspace hand-off (see below)
 ```
 
-Outputs go to:
+Outputs:
 
 ```
-clean/*.mp4
+clean/*_cleaned.mp4
 ```
 
-Creating `raw` and `clean` is automatic (they are created the first time you run the script).
+The script/server creates `raw/`, `cursor-uploads/`, and `clean/` if missing.
+
+### Using this from Cursor (“uploads”)
+
+Cursor chat and Composer attachments are **not** written to one official public “upload” path on disk. To process something you pasted or attached:
+
+1. **Open this repo folder** (`audio-wash`) as your workspace in Cursor when you’re working with files.
+2. **Save or copy** the `.mp4` into **`cursor-uploads/`** inside the project — e.g. right‑click attachment → save, or `@`-reference a workspace file once it lives there like `cursor-uploads/myvideo.mp4`.
+3. Run `python wash.py`.
+
+The script scans **`raw/` first**, then **`cursor-uploads/`**. If the same filename exists in both, the copy from `raw/` is used and the other is skipped.
 
 ## What it does (per file)
 
@@ -43,19 +77,22 @@ From this project folder:
 python wash.py
 ```
 
-Only **non-recursive** `*.mp4` files directly inside `raw/` are processed.
+Scan only one side:
+
+```bash
+python wash.py --only cursor-uploads
+python wash.py --only raw --only cursor-uploads
+```
 
 ## GitHub
 
-Initialize a new repository in this directory, add the tracked files, and push:
+`raw/`, `clean/`, and `cursor-uploads/` are ignored — only source code/docs are tracked.
 
 ```bash
-git init
-git add wash.py README.md LICENSE .gitignore
-git commit -m "Initial commit: Audio Wash"
+git add app.py wash.py requirements.txt README.md LICENSE .gitignore
+git commit -m "Your message"
+git push
 ```
-
-Media folders `raw/` and `clean/` stay out of version control via `.gitignore`.
 
 ## Legal / ethics
 

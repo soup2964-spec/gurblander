@@ -1,6 +1,7 @@
 # Local media (do not upload)
 /raw/
 /clean/
+/cursor-uploads/
 
 # Python
 __pycache__/
