@@ -20,3 +20,8 @@ Desktop.ini
 .idea/
 .vscode/
 
+# Next.js dashboard
+/social-dashboard/node_modules/
+/social-dashboard/.next/
+/social-dashboard/tmp/
+

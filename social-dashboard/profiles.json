@@ -1,0 +1,14 @@
+[
+  {
+    "id": "1",
+    "name": "TikTok Account 1",
+    "profileId": "ads_power_id_1",
+    "platform": "tiktok"
+  },
+  {
+    "id": "2",
+    "name": "IG Account 1",
+    "profileId": "ads_power_id_2",
+    "platform": "instagram"
+  }
+]
