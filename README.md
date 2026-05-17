@@ -63,7 +63,7 @@ The script scans **`raw/` first**, then **`cursor-uploads/`**. If the same filen
 
 | Step | FFmpeg idea |
 |------|----------------|
-| Strip audio | `-an` |
+| Scrub original audio + add silent track | `-f lavfi -i anullsrc ... -map 1:a:0 -c:a aac -shortest` |
 | Drop metadata mappings | `-map_metadata -1` |
 | Horizontal mirror + ~5 % zoom crop | `-vf "hflip,scale=...,crop=..."` |
 

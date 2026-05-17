@@ -7,7 +7,7 @@ Audio Wash — batch-process MP4 files with FFmpeg:
     ./cursor-uploads/   ← put Cursor/@-referenced or saved-chat files here
 
   For each file:
-    - remove audio (-an)
+    - remove original audio and replace with generated silent AAC audio
     - strip metadata (-map_metadata -1)
     - horizontal flip plus ~5% center zoom/crop (re-encoded video)
 
@@ -76,11 +76,18 @@ def wash_one(ffmpeg: str, src: Path, dst: Path) -> subprocess.CompletedProcess[s
         "-y",
         "-i",
         str(src.resolve()),
+        "-f",
+        "lavfi",
+        "-i",
+        "anullsrc=channel_layout=stereo:sample_rate=44100",
         "-vf",
         VIDEO_FILTER,
-        "-an",
         "-map_metadata",
         "-1",
+        "-map",
+        "0:v:0",
+        "-map",
+        "1:a:0",
         "-dn",
         "-c:v",
         "libx264",
@@ -88,8 +95,13 @@ def wash_one(ffmpeg: str, src: Path, dst: Path) -> subprocess.CompletedProcess[s
         "18",
         "-preset",
         "medium",
+        "-profile:v",
+        "main",
         "-pix_fmt",
         "yuv420p",
+        "-c:a",
+        "aac",
+        "-shortest",
         "-movflags",
         "+faststart",
         str(dst.resolve()),
