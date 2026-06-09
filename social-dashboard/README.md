@@ -1,4 +1,4 @@
-# Social Dashboard (Local)
+# Gurblander Dashboard (Local)
 
 Local Next.js dashboard for sequential AdsPower profile posting with Playwright.
 
@@ -14,7 +14,7 @@ Open `http://localhost:3000`.
 Dashboards:
 
 - `http://localhost:3000` - Social Distributor
-- `http://localhost:3000/audio-wash` - Audio Wash
+- `http://localhost:3000/gurblander` - Gurblander
 
 ## Configure accounts
 

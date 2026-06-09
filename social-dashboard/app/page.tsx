@@ -98,8 +98,8 @@ export default function Page() {
       <section className="rounded-xl border border-rose-200 bg-white p-6 shadow-sm">
         <div className="flex items-center justify-between gap-3">
           <h1 className="text-2xl font-semibold text-rose-900">Local Social Distribution Dashboard</h1>
-          <a className="text-sm font-medium text-blue-700 hover:underline" href="/audio-wash">
-            Open Audio Wash Dashboard
+          <a className="text-sm font-medium text-blue-700 hover:underline" href="/gurblander">
+            Open Gurblander Dashboard
           </a>
         </div>
         <p className="mt-2 text-sm text-rose-700">

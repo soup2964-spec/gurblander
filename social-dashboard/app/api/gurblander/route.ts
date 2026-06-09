@@ -13,7 +13,7 @@ function cleanedName(filename: string): string {
 function detectFfmpegPath(explicitPath?: string): string | null {
   const candidates = [
     explicitPath,
-    process.env.AUDIO_WASH_FFMPEG_PATH,
+    process.env.GURBLANDER_FFMPEG_PATH,
     process.env.FFMPEG_PATH,
     path.join(process.env.LOCALAPPDATA ?? "", "Microsoft", "WindowsApps", "ffmpeg.exe"),
     path.join(
@@ -101,13 +101,13 @@ export async function POST(req: Request) {
     const ffmpegPath = detectFfmpegPath(explicitFfmpeg);
     if (!ffmpegPath) {
       return NextResponse.json(
-        { error: "ffmpeg not found. Provide ffmpegPath or set AUDIO_WASH_FFMPEG_PATH." },
+        { error: "ffmpeg not found. Provide ffmpegPath or set GURBLANDER_FFMPEG_PATH." },
         { status: 400 }
       );
     }
 
-    const uploadsDir = path.join(process.cwd(), "tmp", "audio-wash", "uploads");
-    const cleanDir = path.join(process.cwd(), "tmp", "audio-wash", "clean");
+    const uploadsDir = path.join(process.cwd(), "tmp", "gurblander", "uploads");
+    const cleanDir = path.join(process.cwd(), "tmp", "gurblander", "clean");
     await fs.mkdir(uploadsDir, { recursive: true });
     await fs.mkdir(cleanDir, { recursive: true });
 
@@ -125,10 +125,10 @@ export async function POST(req: Request) {
       ffmpegPath,
       inputName,
       outputName,
-      downloadPath: `/api/audio-wash/download?file=${encodeURIComponent(outputName)}`
+      downloadPath: `/api/gurblander/download?file=${encodeURIComponent(outputName)}`
     });
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Audio wash failed";
+    const message = error instanceof Error ? error.message : "Gurblander processing failed";
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }

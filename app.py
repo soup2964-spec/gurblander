@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Local dashboard for Audio Wash.
+Local dashboard for Gurblander.
 
 Features:
 - Upload one MP4 from the browser
@@ -18,7 +18,7 @@ from werkzeug.utils import secure_filename
 
 from wash import ensure_folders, find_ffmpeg, process_file
 
-APP_TITLE = "Audio Wash Dashboard"
+APP_TITLE = "Gurblander Dashboard"
 ALLOWED_EXTENSIONS = {".mp4"}
 HTML = """
 <!doctype html>
@@ -105,7 +105,7 @@ RAW_DIR = FOLDERS["raw"]
 CLEAN_DIR = FOLDERS["clean"]
 
 app = Flask(__name__)
-app.secret_key = "audio-wash-dev"
+app.secret_key = "gurblander-dev"
 app.config["FFMPEG_PATH"] = ""
 
 
@@ -182,7 +182,7 @@ def upload():
             flash(f"Auto-detected ffmpeg: {auto}", "success")
     if not ffmpeg:
         flash(
-            "FFmpeg not found. Add ffmpeg.exe path above or set AUDIO_WASH_FFMPEG_PATH / FFMPEG_PATH.",
+            "FFmpeg not found. Add ffmpeg.exe path above or set GURBLANDER_FFMPEG_PATH / FFMPEG_PATH.",
             "error",
         )
         return redirect(url_for("index"))

@@ -10,7 +10,7 @@ export async function GET(req: Request) {
   }
 
   const safeName = path.basename(file);
-  const fullPath = path.join(process.cwd(), "tmp", "audio-wash", "clean", safeName);
+  const fullPath = path.join(process.cwd(), "tmp", "gurblander", "clean", safeName);
 
   try {
     await fs.access(fullPath);

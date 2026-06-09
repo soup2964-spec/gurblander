@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Audio Wash — batch-process MP4 files with FFmpeg:
+Gurblander — batch-process MP4 files with FFmpeg:
 
   Inputs (non-recursive, top-level .mp4 only):
     ./raw/
@@ -52,13 +52,13 @@ def find_ffmpeg(explicit_path: str | None = None) -> str | None:
     Resolve ffmpeg executable path.
     Priority:
       1) explicit function arg
-      2) AUDIO_WASH_FFMPEG_PATH env
+      2) GURBLANDER_FFMPEG_PATH env
       3) FFMPEG_PATH env
       4) PATH lookup (ffmpeg / ffmpeg.exe)
     """
     for candidate in (
         explicit_path,
-        os.getenv("AUDIO_WASH_FFMPEG_PATH"),
+        os.getenv("GURBLANDER_FFMPEG_PATH"),
         os.getenv("FFMPEG_PATH"),
     ):
         resolved = _valid_ffmpeg_path(candidate)

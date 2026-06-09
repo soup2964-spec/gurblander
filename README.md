@@ -1,4 +1,4 @@
-# Audio Wash
+# Gurblander
 
 Small utility to normalize MP4 files with FFmpeg: strips the audio track, drops container metadata mappings, mirrors the picture, and applies a subtle center zoom/crop so pixels are resampled differently from the originals. Video-only files are written under `clean/`.
 
@@ -53,7 +53,7 @@ The script/server creates `raw/`, `cursor-uploads/`, and `clean/` if missing.
 
 Cursor chat and Composer attachments are **not** written to one official public “upload” path on disk. To process something you pasted or attached:
 
-1. **Open this repo folder** (`audio-wash`) as your workspace in Cursor when you’re working with files.
+1. **Open this repo folder** (`gurblander`) as your workspace in Cursor when you’re working with files.
 2. **Save or copy** the `.mp4` into **`cursor-uploads/`** inside the project — e.g. right‑click attachment → save, or `@`-reference a workspace file once it lives there like `cursor-uploads/myvideo.mp4`.
 3. Run `python wash.py`.
 
