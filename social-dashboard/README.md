@@ -1,6 +1,6 @@
 # Gurblander Dashboard (Local)
 
-Local Next.js dashboard for sequential AdsPower profile posting with Playwright.
+Local Next.js dashboard for sequential AdsPower profile posting with Playwright. Connects to your proxy provider and antidetect browser profiles for multi-account distribution.
 
 ## Run locally
 

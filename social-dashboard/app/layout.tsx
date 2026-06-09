@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Local Social Distributor",
-  description: "Local 1-click social media distribution with AdsPower + Playwright"
+  description: "Local social distribution with proxy provider and antidetect browser (AdsPower) + Playwright"
 };
 
 export default function RootLayout({

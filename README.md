@@ -2,6 +2,8 @@
 
 Small utility to normalize MP4 files with FFmpeg: strips the audio track, drops container metadata mappings, mirrors the picture, and applies a subtle center zoom/crop so pixels are resampled differently from the originals. Video-only files are written under `clean/`.
 
+The included Next.js dashboard also connects to your **proxy provider** and **antidetect browser** (AdsPower) for local, multi-account social distribution.
+
 ## Requirements
 
 - Python 3.10+
